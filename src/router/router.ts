@@ -4,7 +4,7 @@ import authenticateToken from "../utils/authenticate";
 
 const router = express.Router();
 
-router.use(authenticateToken)
+router.use(authenticateToken);
 router.use("/api/users", usersRoutes);
 
 router.use("*", (req: Request, res: Response) =>

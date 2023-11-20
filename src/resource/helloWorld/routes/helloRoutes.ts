@@ -1,4 +1,5 @@
-import express, { Request, Response, NextFunction } from "express";
+import express from "express";
+import { handlerGetHelloController } from "../controllers/helloControllers";
 
 const router = express.Router();
 
