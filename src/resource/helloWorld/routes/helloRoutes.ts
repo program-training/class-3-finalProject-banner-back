@@ -1,8 +1,10 @@
 import express from "express";
 import { handlerGetHelloController } from "../controllers/helloControllers";
 
-const router = express.Router();
+const routerHello = express.Router();
 
-router.get("/getHello", handlerGetHelloController);
+routerHello.get("/", handlerGetHelloController);
 
-export default router;
+
+
+export default routerHello;
