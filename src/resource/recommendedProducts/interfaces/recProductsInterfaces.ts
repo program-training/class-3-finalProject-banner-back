@@ -14,6 +14,7 @@ export interface recProductsInterface {
   author: string;
 }
 
-export interface CategoryNameProps {
+export interface CategoryProps {
   categoryName: string;
+  quantity: number;
 }

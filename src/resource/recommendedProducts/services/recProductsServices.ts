@@ -1,12 +1,16 @@
-import { CategoryNameProps } from "../interfaces/recProductsInterfaces";
+import { CategoryProps } from "../interfaces/recProductsInterfaces";
 import { getRecProductsByCategoryNameDal } from "../dal";
 import { getAllProductsDal } from "../dal";
 
 export const getRecProductsByCategoryNameService = async (
-  categoryName: CategoryNameProps
+  categoryName: CategoryProps,
+  quantity: CategoryProps
 ) => {
   try {
-    const result = await getRecProductsByCategoryNameDal(categoryName);
+    const result = await getRecProductsByCategoryNameDal(
+      categoryName,
+      quantity
+    );
     return result;
   } catch (error) {
     console.error(error);
