@@ -1,13 +1,38 @@
-// import { register, loginService } from "../services/usersService";
-// import { handleError } from "../../../utils/handleErrors";
-// import { Request, Response } from "express";
-// import { UserInterface, UserLoginInterface } from "../interfaces/UserInterface";
-// import { Types } from "mongoose";
+import { register, loginService } from "../services/usersService";
+import { handleError } from "../../../utils/handleErrors";
+import { Request, Response } from "express";
+import { UserInterface, UserLoginInterface } from "../interfaces/UserInterface";
+import { getRecProductsByCategoryNameService } from "../services/recProductsServices";
+import { getAllProductsService } from "../services/recProductsServices";
+import { Types } from "mongoose";
 // import {
 //   getProductByRecIDService,
 //   getRecProductByProductIDService,
 //   getRecProductsService,
 // } from "../../users/services/usersService";
+
+export const getRecProductsByCategoryNameController = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const { categoryName, quantity } = req.body;
+    const result = await getRecProductsByCategoryNameService(categoryName, quantity);
+    return res.send(result);
+  } catch (error) {
+    handleError(res, error);
+  }
+};
+
+export const getAllProductsController = async (req: Request, res: Response) => {
+  try {
+    const result = await getAllProductsService();
+    return res.send(result);
+  } catch (error) {
+    handleError(res, error);
+  }
+};
+
 
 // export const handleGetRecProducts = async (req: Request, res: Response) => {
 //   try {
@@ -57,8 +82,6 @@
 //     handleError(res, error);
 //   }
 // };
-
-// /////////////////////////////////////////////////////////
 
 // export const handleGetProductById = async (req: Request, res: Response) => {
 //   try {
