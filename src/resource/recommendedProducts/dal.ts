@@ -1,9 +1,52 @@
 import { Types } from "mongoose";
 import recProductsModel from "../../mongoDB/Schemas/UserSchema";
 import { handleDBResponseError } from "../../utils/handleErrors";
-import { recProductsInterface } from "./interfaces/recProductsInterfaces";
+import {
+  CategoryNameProps,
+  recProductsInterface,
+} from "./interfaces/recProductsInterfaces";
+import axios from "axios";
 
 type CollectionResult = Promise<Record<string, unknown>[] | Error>;
+
+function shuffleArray<T>(array: T[]): T[] {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+export const getRecProductsByCategoryNameDal = async (
+  categoryName: CategoryNameProps
+) => {
+  try {
+    const categories = await recProductsModel
+      .find({ category: categoryName })
+      .exec();
+    if (categories.length === 0) {
+      return [];
+    }
+    const shuffledCategories = shuffleArray(categories);
+    return shuffledCategories;
+  } catch (error) {
+    return handleDBResponseError(error);
+  }
+};
+
+export const getAllProductsDal = async () => {
+  try {
+    const response = await axios.get(
+      "https://erp-server-uxqd.onrender.com/api/shop_inventory/"
+    );
+    if (response.status < 300 && response.status >= 200) {
+      const products = response.data;
+      return products;
+    }
+  } catch (error) {
+    return handleDBResponseError(error);
+  }
+};
 
 export const createRecProducts = async (
   recProductsData: recProductsInterface

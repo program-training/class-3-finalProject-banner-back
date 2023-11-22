@@ -1,4 +1,3 @@
-
 interface UserInterface {
   id: string;
   fullName: string;

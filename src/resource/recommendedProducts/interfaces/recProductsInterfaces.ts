@@ -13,3 +13,7 @@ export interface recProductsInterface {
   createdAt: Date;
   author: string;
 }
+
+export interface CategoryNameProps {
+  categoryName: string;
+}

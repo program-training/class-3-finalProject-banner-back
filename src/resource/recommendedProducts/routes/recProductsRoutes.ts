@@ -5,10 +5,14 @@ import {
   handleGetRecProductByproductId,
   handlePostRecProducts,
   handleDeleteRecProducts,
+  getRecProductsByCategoryNameController,
+  getAllProductsController,
 } from "../controllers/recProductsControllers";
 
 const router = express.Router();
 
+router.post("/categoryName", getRecProductsByCategoryNameController);
+router.get("/allProducts", getAllProductsController);
 router.get("/recProducts", handleGetRecProducts);
 router.get("/recProducts:recProductId", handleGetRecProductById);
 router.get("/recProducts:productId", handleGetRecProductByproductId);
