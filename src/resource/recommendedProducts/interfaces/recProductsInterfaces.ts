@@ -1,5 +1,7 @@
+import { Types } from "mongoose";
+
 export interface recProductsInterface {
-  recProductId: string;
+  productId: Types.ObjectId;
   name: string;
   salePrice: number;
   quantity: number;

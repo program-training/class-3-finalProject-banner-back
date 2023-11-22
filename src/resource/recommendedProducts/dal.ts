@@ -28,7 +28,9 @@ export const readRecProducts = async (): CollectionResult => {
   }
 };
 
-export const readRecProductsById = async (id: Types.ObjectId) => {
+export const readRecProductsByRecId = async (
+  id: recProductsInterface["productId"]
+) => {
   try {
     const recProduct = await recProductsModel.findOne({ _id: id });
     if (!recProduct) throw new Error("recProduct Not Found!");
@@ -38,9 +40,7 @@ export const readRecProductsById = async (id: Types.ObjectId) => {
   }
 };
 
-export const readRecProductsByProductId = async (
-  id: recProductsInterface["recProductId"]
-) => {
+export const readRecProductsByProductId = async (id: Types.ObjectId) => {
   try {
     const recProduct = await recProductsModel.findOne({ recProductId: id });
     if (!recProduct) throw new Error("recProduct Not Found!");
@@ -51,7 +51,7 @@ export const readRecProductsByProductId = async (
 };
 
 export const deleteRecProductsById = async (
-  id: recProductsInterface["recProductId"]
+  id: recProductsInterface["productId"]
 ) => {
   try {
     const recProduct = await recProductsModel.deleteOne({ recProductId: id });

@@ -1,42 +1,68 @@
-import { comparePassword } from "../../../utils/bcrypt";
-import { createUser, readUserByEmail } from "../dal";
 import chalk from "chalk";
-import { UserInterface, UserLoginInterface } from "../interfaces/UserInterface";
-import jwt from 'jsonwebtoken';
-import { hash } from "bcryptjs";
+import {
+  createRecProducts,
+  deleteRecProductsById,
+  readRecProducts,
+  readRecProductsByProductId,
+  readRecProductsByRecId,
+} from "../../recommendedProducts/dal";
+import { Types } from "mongoose";
+import { recProductsInterface } from "../../recommendedProducts/interfaces/recProductsInterfaces";
 
-type UserResult = Promise<UserInterface | null | unknown>;
-
-
-export const loginService = async (user: UserLoginInterface): UserResult => {
+export const getRecProductsService = async () => {
   try {
-    const userByEmailFromDB = await readUserByEmail(user.email);
-    if (comparePassword(user.password, userByEmailFromDB.password)) { // 
-      if (process.env.ACCESS_TOKEN_JWT) {
-        const userAccessToken = jwt.sign(user, process.env.ACCESS_TOKEN_JWT)
-        const userByEmail = await readUserByEmail(user.email)
-        return Promise.resolve(JSON.stringify({"token": userAccessToken, "user": userByEmail}))
-      }
-      else {
-        return Promise.reject(new Error("server error: ACCESS_TOKEN_JWT not found"));
-      }
-    }
-    else {
-      return Promise.reject(new Error("Bad Authentication"));
-    }
+    const RecProductsFromDAL = await readRecProducts();
+    if (!RecProductsFromDAL) throw new Error("No RecProducts in the database");
+    return RecProductsFromDAL;
   } catch (error) {
     console.log(chalk.redBright(error));
     return Promise.reject(error);
   }
 };
 
-export const register = async (user: UserInterface): UserResult => {
+export const getProductByRecIDService = async (
+  recProductId: Types.ObjectId
+) => {
   try {
-    user.password = await hash(user.password, 10)
-    return await createUser(user);
+    const RecProductsFromDAL = await readRecProductsByRecId(recProductId);
+    return RecProductsFromDAL;
   } catch (error) {
     console.log(chalk.redBright(error));
     return Promise.reject(error);
   }
 };
 
+export const getRecProductByProductIDService = async (
+  productId: Types.ObjectId
+) => {
+  try {
+    const RecProductsFromDAL = await readRecProductsByProductId(productId);
+    return RecProductsFromDAL;
+  } catch (error) {
+    console.log(chalk.redBright(error));
+    return Promise.reject(error);
+  }
+};
+
+export const deleteRecProductByRecIDService = async (
+  recProductId: Types.ObjectId
+) => {
+  try {
+    const RecProductsFromDAL = await deleteRecProductsById(recProductId);
+    return RecProductsFromDAL;
+  } catch (error) {
+    console.log(chalk.redBright(error));
+    return Promise.reject(error);
+  }
+};
+export const postRecProductService = async (
+  recProductsData: recProductsInterface
+) => {
+  try {
+    const RecProductsFromDAL = await createRecProducts(recProductsData);
+    return RecProductsFromDAL;
+  } catch (error) {
+    console.log(chalk.redBright(error));
+    return Promise.reject(error);
+  }
+};
