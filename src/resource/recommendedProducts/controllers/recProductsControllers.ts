@@ -9,6 +9,8 @@ import {
   postRecProductService,
 } from "../services/recProductsService";
 import { recProductsInterface } from "../interfaces/recProductsInterfaces";
+import { getRecProductsByCategoryNameService } from "../services/recProductsServices";
+import { getAllProductsService } from "../services/recProductsServices";
 
 export const handleGetRecProducts = async (req: Request, res: Response) => {
   try {
@@ -54,6 +56,31 @@ export const handleDeleteRecProducts = async (req: Request, res: Response) => {
     const id = new Types.ObjectId(req.params.id);
     const RecProduct = await deleteRecProductByRecIDService(id);
     return res.send(RecProduct);
+  } catch (error) {
+    handleError(res, error);
+  }
+};
+
+export const getAllProductsController = async (req: Request, res: Response) => {
+  try {
+    const result = await getAllProductsService();
+    return res.send(result);
+  } catch (error) {
+    handleError(res, error);
+  }
+};
+
+export const getRecProductsByCategoryNameController = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const { categoryName, quantity } = req.body;
+    const result = await getRecProductsByCategoryNameService(
+      categoryName,
+      quantity
+    );
+    return res.send(result);
   } catch (error) {
     handleError(res, error);
   }

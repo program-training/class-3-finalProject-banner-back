@@ -15,3 +15,8 @@ export interface recProductsInterface {
   createdAt: Date;
   author: string;
 }
+
+export interface CategoryProps {
+  categoryName: string;
+  quantity: number;
+}
