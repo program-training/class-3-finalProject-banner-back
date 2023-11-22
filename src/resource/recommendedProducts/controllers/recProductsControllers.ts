@@ -7,7 +7,7 @@ import {
   getRecProductByProductIDService,
   getRecProductsService,
   postRecProductService,
-} from "../../users/services/usersService";
+} from "../services/recProductsService";
 import { recProductsInterface } from "../interfaces/recProductsInterfaces";
 
 export const handleGetRecProducts = async (req: Request, res: Response) => {
