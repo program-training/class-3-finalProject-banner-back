@@ -1,13 +1,14 @@
-import { register, loginService } from "../services/usersService";
 import { handleError } from "../../../utils/handleErrors";
 import { Request, Response } from "express";
-import { UserInterface, UserLoginInterface } from "../interfaces/UserInterface";
 import { Types } from "mongoose";
 import {
+  deleteRecProductByRecIDService,
   getProductByRecIDService,
   getRecProductByProductIDService,
   getRecProductsService,
+  postRecProductService,
 } from "../../users/services/usersService";
+import { recProductsInterface } from "../interfaces/recProductsInterfaces";
 
 export const handleGetRecProducts = async (req: Request, res: Response) => {
   try {
@@ -41,40 +42,18 @@ export const handleGetRecProductByproductId = async (
 };
 export const handlePostRecProducts = async (req: Request, res: Response) => {
   try {
-    const userFromBody = req.body as UserLoginInterface;
-    const user = await loginService(userFromBody);
-    return res.send(user);
+    const RecProductsFromBody = req.body as recProductsInterface;
+    const RecProduct = await postRecProductService(RecProductsFromBody);
+    return res.send(RecProduct);
   } catch (error) {
     handleError(res, error);
   }
 };
 export const handleDeleteRecProducts = async (req: Request, res: Response) => {
   try {
-    const userFromBody = req.body as UserLoginInterface;
-    const user = await loginService(userFromBody);
-    return res.send(user);
-  } catch (error) {
-    handleError(res, error);
-  }
-};
-
-/////////////////////////////////////////////////////////
-
-export const handleGetProductById = async (req: Request, res: Response) => {
-  try {
     const id = new Types.ObjectId(req.params.id);
-    const productById = await getProductByIDService(id);
-    return res.send(productById);
-  } catch (error) {
-    handleError(res, error);
-  }
-};
-
-export const handleCreateProduct = async (req: Request, res: Response) => {
-  try {
-    const productToAdd = req.body as ProductInterface;
-    const productRecord = await createProductService(productToAdd);
-    return res.send(productRecord);
+    const RecProduct = await deleteRecProductByRecIDService(id);
+    return res.send(RecProduct);
   } catch (error) {
     handleError(res, error);
   }
