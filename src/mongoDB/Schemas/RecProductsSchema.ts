@@ -2,7 +2,7 @@ import mongoose, { Schema, Model, Types } from "mongoose";
 import { recProductsInterface } from "../../resource/recommendedProducts/interfaces/recProductsInterfaces";
 
 const recProductsSchema = new Schema<recProductsInterface>({
-  recProductId: { type: String, required: true },
+  productId: { type: Schema.Types.ObjectId, required: true },
   name: { type: String, required: true },
   salePrice: { type: Number, required: true },
   quantity: { type: Number, required: true },
