@@ -3,14 +3,14 @@ import { Request, Response } from "express";
 import { Types } from "mongoose";
 import {
   deleteRecProductByRecIDService,
+  getAllProductsService,
   getProductByRecIDService,
   getRecProductByProductIDService,
+  getRecProductsByCategoryNameService,
   getRecProductsService,
   postRecProductService,
 } from "../services/recProductsService";
 import { recProductsInterface } from "../interfaces/recProductsInterfaces";
-import { getRecProductsByCategoryNameService } from "../services/recProductsServices";
-import { getAllProductsService } from "../services/recProductsServices";
 
 export const handleGetRecProducts = async (req: Request, res: Response) => {
   try {

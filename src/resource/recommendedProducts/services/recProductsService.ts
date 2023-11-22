@@ -8,6 +8,9 @@ import {
 } from "../../recommendedProducts/dal";
 import { Types } from "mongoose";
 import { recProductsInterface } from "../../recommendedProducts/interfaces/recProductsInterfaces";
+import { CategoryProps } from "../interfaces/recProductsInterfaces";
+import { getRecProductsByCategoryNameDal } from "../dal";
+import { getAllProductsDal } from "../dal";
 
 export const getRecProductsService = async () => {
   try {
@@ -64,5 +67,31 @@ export const postRecProductService = async (
   } catch (error) {
     console.log(chalk.redBright(error));
     return Promise.reject(error);
+  }
+};
+
+export const getRecProductsByCategoryNameService = async (
+  categoryName: CategoryProps,
+  quantity: CategoryProps
+) => {
+  try {
+    const result = await getRecProductsByCategoryNameDal(
+      categoryName,
+      quantity
+    );
+    return result;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+export const getAllProductsService = async () => {
+  try {
+    const result = await getAllProductsDal();
+    return result;
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
 };
