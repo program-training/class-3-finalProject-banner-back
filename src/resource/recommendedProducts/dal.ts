@@ -55,7 +55,21 @@ export const createRecProducts = async (
 ) => {
   try {
     const recProducts = new recProductsModel({
-      ...recProductsData,
+      productId: recProductsData._id,
+      name: recProductsData.name,
+      salePrice: recProductsData.salePrice,
+      quantity: recProductsData.quantity,
+      description: recProductsData.description,
+      category: recProductsData.category,
+      discountPercentage: recProductsData.discountPercentage,
+      image: {
+        large: recProductsData.image.large,
+        medium: recProductsData.image.medium,
+        small: recProductsData.image.small,
+        alt: recProductsData.image.alt,
+      },
+      createdAt: recProductsData.createdAt,
+      author: recProductsData.author,
     });
     recProducts.isNew = true;
     await recProducts.save();
@@ -74,7 +88,7 @@ export const readRecProducts = async (): CollectionResult => {
 };
 
 export const readRecProductsByRecId = async (
-  id: recProductsInterface["productId"]
+  id: recProductsInterface["_id"]
 ) => {
   try {
     const recProduct = await recProductsModel.findOne({ _id: id });
@@ -85,9 +99,9 @@ export const readRecProductsByRecId = async (
   }
 };
 
-export const readRecProductsByProductId = async (id: Types.ObjectId) => {
+export const readRecProductsByProductId = async (id: string) => {
   try {
-    const recProduct = await recProductsModel.findOne({ recProductId: id });
+    const recProduct = await recProductsModel.findOne({ productId: id });
     if (!recProduct) throw new Error("recProduct Not Found!");
     return recProduct;
   } catch (error) {
@@ -96,11 +110,15 @@ export const readRecProductsByProductId = async (id: Types.ObjectId) => {
 };
 
 export const deleteRecProductsById = async (
-  id: recProductsInterface["productId"]
+  id: recProductsInterface["_id"]
 ) => {
   try {
-    const recProduct = await recProductsModel.deleteOne({ recProductId: id });
-    if (!recProduct) throw new Error("recProduct Not Found!");
+    const recProduct = await recProductsModel.findOneAndDelete({
+      _id: id,
+    });
+    console.log(recProduct);
+
+    if (!recProduct) throw new Error("recProduct Not Found to be deleted !");
     return recProduct;
   } catch (error) {
     return handleDBResponseError(error);

@@ -1,9 +1,9 @@
 import express, { Request, Response } from "express";
 import usersRoutes from "../resource/users/routes/usersRoutes";
 import authenticateToken from "../utils/authenticate";
-import { handlerGetHelloController } from "../resource/helloWorld/controllers/helloControllers";
 import recommendedProductsRoutes from "../resource/recommendedProducts/routes/recProductsRoutes";
 import routerHello from "../resource/helloWorld/routes/helloRoutes";
+import { handlerGetHelloController } from "../resource/helloWorld/controllers/helloControllers";
 const router = express.Router();
 
 router.use(authenticateToken);

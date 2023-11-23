@@ -23,9 +23,7 @@ export const getRecProductsService = async () => {
   }
 };
 
-export const getProductByRecIDService = async (
-  recProductId: Types.ObjectId
-) => {
+export const getProductByRecIDService = async (recProductId: string) => {
   try {
     const RecProductsFromDAL = await readRecProductsByRecId(recProductId);
     return RecProductsFromDAL;
@@ -35,9 +33,7 @@ export const getProductByRecIDService = async (
   }
 };
 
-export const getRecProductByProductIDService = async (
-  productId: Types.ObjectId
-) => {
+export const getRecProductByProductIDService = async (productId: string) => {
   try {
     const RecProductsFromDAL = await readRecProductsByProductId(productId);
     return RecProductsFromDAL;
@@ -47,9 +43,7 @@ export const getRecProductByProductIDService = async (
   }
 };
 
-export const deleteRecProductByRecIDService = async (
-  recProductId: Types.ObjectId
-) => {
+export const deleteRecProductByRecIDService = async (recProductId: string) => {
   try {
     const RecProductsFromDAL = await deleteRecProductsById(recProductId);
     return RecProductsFromDAL;
