@@ -11,7 +11,7 @@ import {
 
 const router = express.Router();
 
-router.post("/categoryName", getRecProductsByCategoryNameController);
+router.get("/categoryName", getRecProductsByCategoryNameController);
 router.get("/allProducts", getAllProductsController);
 router.get("/recProducts", handleGetRecProducts);
 router.get("/recProducts:recProductId", handleGetRecProductById);
