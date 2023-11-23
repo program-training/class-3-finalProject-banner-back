@@ -99,7 +99,7 @@ export const deleteRecProductsById = async (
   id: recProductsInterface["productId"]
 ) => {
   try {
-    const recProduct = await recProductsModel.deleteOne({ recProductId: id });
+    const recProduct = await recProductsModel.findOneAndDelete({ recProductId: id });
     if (!recProduct) throw new Error("recProduct Not Found!");
     return recProduct;
   } catch (error) {
