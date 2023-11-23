@@ -11,12 +11,15 @@ import {
 
 const router = express.Router();
 
-router.post("/categoryName", getRecProductsByCategoryNameController);
+router.get("/categoryName", getRecProductsByCategoryNameController);
 router.get("/allProducts", getAllProductsController);
 router.get("/recProducts", handleGetRecProducts);
-router.get("/recProducts/recProductId", handleGetRecProductById);
-router.get("/recProducts/productId", handleGetRecProductByproductId);
-router.post("/recProducts", handlePostRecProducts);
-router.delete("/recProducts/:recProductsId", handleDeleteRecProducts);
+router.get("/recProductsById/:recProductId", handleGetRecProductById);
+router.get(
+  "/recProductsByProductId/:productId",
+  handleGetRecProductByproductId
+);
+router.post("/recProduct", handlePostRecProducts);
+router.delete("/recProduct/:recProductsId", handleDeleteRecProducts);
 
 export default router;

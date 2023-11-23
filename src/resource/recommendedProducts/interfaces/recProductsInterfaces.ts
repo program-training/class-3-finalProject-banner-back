@@ -1,7 +1,8 @@
 import { Types } from "mongoose";
 
 export interface recProductsInterface {
-  productId: Types.ObjectId;
+  productId: string
+  _id?: string;
   name: string;
   salePrice: number;
   quantity: number;
@@ -9,7 +10,9 @@ export interface recProductsInterface {
   category: string;
   discountPercentage: number;
   image: {
-    url: string;
+    large: string;
+    medium: string;
+    small: string;
     alt: string;
   };
   createdAt: Date;
