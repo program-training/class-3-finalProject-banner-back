@@ -1,5 +1,5 @@
 import { Types } from "mongoose";
-import recProductsModel from "../../mongoDB/Schemas/UserSchema";
+import recProductsModel from "../../mongoDB/Schemas/RecProductsSchema";
 import { handleDBResponseError } from "../../utils/handleErrors";
 import {
   CategoryProps,
@@ -85,9 +85,9 @@ export const readRecProductsByRecId = async (
   }
 };
 
-export const readRecProductsByProductId = async (id: Types.ObjectId) => {
+export const readRecProductsByProductId = async (id: string) => {
   try {
-    const recProduct = await recProductsModel.findOne({ recProductId: id });
+    const recProduct = await recProductsModel.findOne({ productId: id });
     if (!recProduct) throw new Error("recProduct Not Found!");
     return recProduct;
   } catch (error) {
@@ -99,8 +99,12 @@ export const deleteRecProductsById = async (
   id: recProductsInterface["productId"]
 ) => {
   try {
-    const recProduct = await recProductsModel.deleteOne({ recProductId: id });
-    if (!recProduct) throw new Error("recProduct Not Found!");
+    const recProduct = await recProductsModel.findOneAndDelete({
+      _id: id,
+    });
+    console.log(recProduct);
+
+    if (!recProduct) throw new Error("recProduct Not Found to be deleted !");
     return recProduct;
   } catch (error) {
     return handleDBResponseError(error);

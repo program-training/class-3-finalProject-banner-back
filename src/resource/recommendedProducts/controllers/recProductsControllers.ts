@@ -23,7 +23,7 @@ export const handleGetRecProducts = async (req: Request, res: Response) => {
 
 export const handleGetRecProductById = async (req: Request, res: Response) => {
   try {
-    const id = new Types.ObjectId(req.params.id);
+    const id = req.params.recProductId;
     const recProductById = await getProductByRecIDService(id);
     return res.send(recProductById);
   } catch (error) {
@@ -35,7 +35,7 @@ export const handleGetRecProductByproductId = async (
   res: Response
 ) => {
   try {
-    const id = new Types.ObjectId(req.body.productId);
+    const id = req.params.productId;
     const recProductByProductId = await getRecProductByProductIDService(id);
     return res.send(recProductByProductId);
   } catch (error) {
@@ -53,7 +53,7 @@ export const handlePostRecProducts = async (req: Request, res: Response) => {
 };
 export const handleDeleteRecProducts = async (req: Request, res: Response) => {
   try {
-    const id = new Types.ObjectId(req.params.id);
+    const id = req.params.recProductsId;
     const RecProduct = await deleteRecProductByRecIDService(id);
     return res.send(RecProduct);
   } catch (error) {
