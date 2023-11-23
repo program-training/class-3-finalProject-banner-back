@@ -17,5 +17,5 @@ router.get("/recProducts", handleGetRecProducts);
 router.get("/recProductsById/:recProductId", handleGetRecProductById);
 router.get("/recProductsByProductId/:productId", handleGetRecProductByproductId);
 router.post("/recProduct", handlePostRecProducts);
-router.delete("/recProduct:recProductsId", handleDeleteRecProducts);
+router.delete("/recProduct/:recProductsId", handleDeleteRecProducts);
 export default router;
