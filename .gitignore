@@ -1,3 +1,6 @@
+#Jest
+jest.config.js
+
 # Logs
 logs
 *.log
