@@ -9,7 +9,9 @@ const recProductsSchema = new Schema<recProductsInterface>({
   category: { type: String, required: true },
   discountPercentage: { type: Number, required: true },
   image: {
-    url: { type: String, required: true },
+    large: { type: String, required: true },
+    medium: { type: String, required: true },
+    small: { type: String, required: true },
     alt: { type: String, required: true },
   },
   createdAt: { type: Date, required: true },
