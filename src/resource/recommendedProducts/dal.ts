@@ -1,5 +1,5 @@
 import { Types } from "mongoose";
-import recProductsModel from "../../mongoDB/Schemas/UserSchema";
+import recProductsModel from "../../mongoDB/Schemas/RecProductsSchema";
 import { handleDBResponseError } from "../../utils/handleErrors";
 import {
   CategoryProps,
