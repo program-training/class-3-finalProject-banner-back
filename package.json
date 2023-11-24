@@ -4,6 +4,7 @@
   "description": "Server for banner project",
   "main": "./src/server.ts",
   "scripts": {
+    "test": "jest",
     "start": "tsc && dist/src/server.js",
     "dev": "nodemon",
     "ts": "tsc -w",
