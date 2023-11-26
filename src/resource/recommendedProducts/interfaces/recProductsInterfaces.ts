@@ -1,7 +1,8 @@
 import { Types } from "mongoose";
 
 export interface recProductsInterface {
-  _id: string;
+  productId: string;
+  _id?: string;
   name: string;
   salePrice: number;
   quantity: number;
