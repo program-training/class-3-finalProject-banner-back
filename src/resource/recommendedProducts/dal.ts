@@ -1,26 +1,24 @@
-import { Types } from "mongoose";
 import recProductsModel from "../../mongoDB/Schemas/RecProductsSchema";
 import { handleDBResponseError } from "../../utils/handleErrors";
-import {
-  CategoryProps,
-  recProductsInterface,
-} from "./interfaces/recProductsInterfaces";
+import { recProductsInterface } from "./interfaces/recProductsInterfaces";
 import axios from "axios";
 
 type CollectionResult = Promise<Record<string, unknown>[] | Error>;
 
-function shuffleAndSlice<T>(array: T[], quantity: CategoryProps): T[] {
+function shuffleAndSlice<T>(array: T[], quantity: string): T[] {
   const shuffledArray = array.slice();
+  const quantityAsNumber = parseInt(quantity, 10);
+
   for (let i = shuffledArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
   }
-  return shuffledArray.slice(0, quantity.quantity);
+  return shuffledArray.slice(0, quantityAsNumber);
 }
 
 export const getRecProductsByCategoryNameDal = async (
-  categoryName: CategoryProps,
-  quantity: CategoryProps
+  categoryName: string,
+  quantity: string
 ) => {
   try {
     const categories = await recProductsModel

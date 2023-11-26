@@ -1,6 +1,5 @@
 import { handleError } from "../../../utils/handleErrors";
 import { Request, Response } from "express";
-import { Types } from "mongoose";
 import {
   deleteRecProductByRecIDService,
   getAllProductsService,
@@ -75,7 +74,7 @@ export const getRecProductsByCategoryNameController = async (
   res: Response
 ) => {
   try {
-    const { categoryName, quantity } = req.body;
+    const { categoryName, quantity } = req.params;
     const result = await getRecProductsByCategoryNameService(
       categoryName,
       quantity

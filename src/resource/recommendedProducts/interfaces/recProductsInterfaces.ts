@@ -1,5 +1,3 @@
-import { Types } from "mongoose";
-
 export interface recProductsInterface {
   productId: string;
   _id?: string;
@@ -17,9 +15,4 @@ export interface recProductsInterface {
   };
   createdAt: Date;
   author: string;
-}
-
-export interface CategoryProps {
-  categoryName: string;
-  quantity: number;
 }
