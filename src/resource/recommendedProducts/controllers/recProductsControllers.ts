@@ -1,6 +1,5 @@
 import { handleError } from "../../../utils/handleErrors";
 import { Request, Response } from "express";
-import { Types } from "mongoose";
 import {
   deleteRecProductByRecIDService,
   getAllProductsService,

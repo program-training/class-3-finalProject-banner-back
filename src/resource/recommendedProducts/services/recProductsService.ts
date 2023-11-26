@@ -6,7 +6,6 @@ import {
   readRecProductsByProductId,
   readRecProductsByRecId,
 } from "../../recommendedProducts/dal";
-import { Types } from "mongoose";
 import { recProductsInterface } from "../../recommendedProducts/interfaces/recProductsInterfaces";
 import { CategoryProps } from "../interfaces/recProductsInterfaces";
 import { getRecProductsByCategoryNameDal } from "../dal";
