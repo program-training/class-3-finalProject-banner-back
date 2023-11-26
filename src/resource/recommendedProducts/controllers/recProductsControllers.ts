@@ -74,7 +74,7 @@ export const getRecProductsByCategoryNameController = async (
   res: Response
 ) => {
   try {
-    const { categoryName, quantity } = req.body;
+    const { categoryName, quantity } = req.params;
     const result = await getRecProductsByCategoryNameService(
       categoryName,
       quantity

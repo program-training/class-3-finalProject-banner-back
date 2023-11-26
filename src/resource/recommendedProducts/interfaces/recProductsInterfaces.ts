@@ -1,5 +1,5 @@
 export interface recProductsInterface {
-  productId: string
+  productId: string;
   _id?: string;
   name: string;
   salePrice: number;
@@ -15,9 +15,4 @@ export interface recProductsInterface {
   };
   createdAt: Date;
   author: string;
-}
-
-export interface CategoryProps {
-  categoryName: string;
-  quantity: number;
 }

@@ -7,7 +7,6 @@ import {
   readRecProductsByRecId,
 } from "../../recommendedProducts/dal";
 import { recProductsInterface } from "../../recommendedProducts/interfaces/recProductsInterfaces";
-import { CategoryProps } from "../interfaces/recProductsInterfaces";
 import { getRecProductsByCategoryNameDal } from "../dal";
 import { getAllProductsDal } from "../dal";
 
@@ -64,8 +63,8 @@ export const postRecProductService = async (
 };
 
 export const getRecProductsByCategoryNameService = async (
-  categoryName: CategoryProps,
-  quantity: CategoryProps
+  categoryName: string,
+  quantity: string
 ) => {
   try {
     const result = await getRecProductsByCategoryNameDal(
