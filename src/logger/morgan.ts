@@ -2,9 +2,10 @@ import morgan from "morgan";
 import { morganTime } from "../utils/timeService";
 import chalk from "chalk";
 import { Request as ExpressRequest } from "express";
+import { UserInterface } from "../resource/users/interfaces/UserInterface";
 
 interface CustomRequest extends ExpressRequest {
-  user?: unknown;
+  user?: UserInterface;
 }
 
 const morganLogger = morgan((tokens, req: CustomRequest, res) => {
