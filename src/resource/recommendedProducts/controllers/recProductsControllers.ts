@@ -74,7 +74,8 @@ export const getRecProductsByCategoryNameController = async (
   res: Response
 ) => {
   try {
-    const { categoryName, quantity } = req.params;
+    const categoryName = req.query.categoryName as string;
+    const quantity = req.query.quantity as string;
     const result = await getRecProductsByCategoryNameService(
       categoryName,
       quantity

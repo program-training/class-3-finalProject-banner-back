@@ -21,11 +21,11 @@ export const getRecProductsByCategoryNameDal = async (
   quantity: string
 ) => {
   try {
-    const categories = await recProductsModel
-      .find({ category: categoryName })
-      .exec();
-    if (categories.length === 0) {
-      return [];
+    const categories = await recProductsModel.find({
+      category: categoryName,
+    });
+    if (!categories) {
+      console.log("No matching document found.");
     }
     const shuffledCategories = shuffleAndSlice(categories, quantity);
     return shuffledCategories;
