@@ -1,17 +1,21 @@
-import mongoose, { Schema, Model, Types } from 'mongoose';
-import BannersInterface from '../../resource/banners/interfaces/BannersInterface';
+import mongoose, { Schema, Model } from "mongoose";
+import BannersInterface from "../../resource/banners/interfaces/BannersInterface";
 
-const userSchema = new Schema<BannersInterface>(
-  {
-    category: { type: String, required: true },
-    title: { type: String, required: true },
-    text: { type: String, required: true },
-    image: { type: String, required: true},
-    author: { type: Schema.Types.ObjectId, required: true},
-    createAt: { type: Date, required: true}
-  }
+const bannerSchema = new Schema<BannersInterface>({
+  category: { type: String, required: true },
+  title: { type: String, required: true },
+  text: { type: String, required: true },
+  image: {
+    url: { type: String, required: true },
+    alt: { type: String, required: true },
+  },
+  author: { type: String, required: true },
+  createAt: { type: Date, required: true },
+});
+
+const BannerModel: Model<BannersInterface> = mongoose.model(
+  "banner",
+  bannerSchema
 );
 
-const UserModel: Model<BannersInterface> = mongoose.model('banner', userSchema);
-
-export default UserModel;
+export default BannerModel;
