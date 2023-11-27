@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
 interface CustomRequest extends Request {
-  user?: any;
+  user?: unknown;
 }
 
 export default function authenticateToken(
