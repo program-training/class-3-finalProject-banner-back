@@ -1,5 +1,5 @@
 export default interface BannerInterface {
-  _id: string;
+  _id?: string;
   category: string;
   image: {
     url: string;
@@ -7,6 +7,6 @@ export default interface BannerInterface {
   };
   title: string;
   text: string;
-  createAt: Date;
+  createAt?: Date;
   author: string;
 }
