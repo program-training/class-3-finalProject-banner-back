@@ -2,6 +2,7 @@ import mongoose, { Schema, Model } from "mongoose";
 import BannersInterface from "../../resource/banners/interfaces/BannersInterface";
 
 const bannerSchema = new Schema<BannersInterface>({
+  url: { type: String, require: true },
   category: { type: String, required: true },
   title: { type: String, required: true },
   text: { type: String, required: true },

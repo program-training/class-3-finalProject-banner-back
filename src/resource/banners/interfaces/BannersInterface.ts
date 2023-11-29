@@ -1,5 +1,6 @@
 export default interface BannerInterface {
   _id?: string;
+  url: string;
   category: string;
   image: {
     url: string;

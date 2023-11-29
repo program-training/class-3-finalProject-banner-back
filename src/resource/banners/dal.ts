@@ -41,6 +41,7 @@ export const createBannerDal = async (newBanner: BannerInterface) => {
     //   author: newBanner.author,
     // });
     const banner = new BannerModel({
+      url: newBanner.url,
       category: newBanner.category,
       image: {
         url: newBanner.image.url,
@@ -70,22 +71,26 @@ export const deleteBannerDal = async (id: string) => {
     return handleDBResponseError(error);
   }
 };
-export const editBannerDal = async (id: string, newBanner: BannerInterface) => {
+export const editBannerDal = async (
+  id: string,
+  editBanner: BannerInterface
+) => {
   try {
     return BannerModel.findOneAndUpdate(
       {
         _id: id,
       },
       {
-        category: newBanner.category,
+        url: editBanner.url,
+        category: editBanner.category,
         image: {
-          url: newBanner.image.url,
-          alt: newBanner.image.alt,
+          url: editBanner.image.url,
+          alt: editBanner.image.alt,
         },
-        title: newBanner.title,
-        text: newBanner.text,
+        title: editBanner.title,
+        text: editBanner.text,
         createAt: new Date(),
-        author: newBanner.author,
+        author: editBanner.author,
       }
     );
   } catch (error) {
