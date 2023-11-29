@@ -11,6 +11,8 @@ import {
 } from "../services/bannersService";
 import { handleError } from "../../../utils/handleErrors";
 import BannerInterface from "../interfaces/BannersInterface";
+import { CategoryInterface } from "../interfaces/BannersInterface";
+import { string } from "joi";
 
 export const getAllBannersController = async (req: Request, res: Response) => {
   try {
@@ -86,16 +88,35 @@ export const editBannerController = async (req: Request, res: Response) => {
     handleError(res, error);
   }
 };
+function shuffleAndSlice<T>(array: T[]): T[] {
+  const shuffledArray = array.slice();
+  const quantityAsNumber = 1;
 
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray.slice(0, quantityAsNumber);
+}
 export const getBannersByCategoryNameController = async (
   req: Request,
   res: Response
 ) => {
   try {
-    const categoryName = req.query.categoryName as string;
+    if (req.query.categoryName) {
+      const categories = req.query.categoryName as string;
+      const result = await getBannersByCategoryNameService(categories);
+      return res.send(result);
+    } else {
+      const categories: CategoryInterface[] = await getAllCategoriesService();
+      const oneCategory = shuffleAndSlice(categories);
 
-    const result = await getBannersByCategoryNameService(categoryName);
-    return res.send(result);
+      const result = await getBannersByCategoryNameService(
+        oneCategory[0].name.toString()
+      );
+
+      return res.send(result);
+    }
   } catch (error) {
     handleError(res, error);
   }

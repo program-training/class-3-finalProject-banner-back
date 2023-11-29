@@ -11,3 +11,8 @@ export default interface BannerInterface {
   createAt?: Date;
   author: string;
 }
+export interface CategoryInterface {
+  _id?: string;
+  name: string;
+  img: string;
+}
