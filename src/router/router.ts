@@ -6,9 +6,9 @@ import bannersRoutes from "../resource/banners/routes/bannersRoutes";
 const router = express.Router();
 
 router.use(authenticateToken);
-router.use("/api/users", usersRoutes);
-router.use("/api/recommended", recommendedProductsRoutes);
-router.use("/api/banners", bannersRoutes);
+router.use("/users", usersRoutes);
+router.use("/recommended", recommendedProductsRoutes);
+router.use("/banners", bannersRoutes);
 
 router.use("*", (req: Request, res: Response) =>
   res.status(404).send("Path Not Found!")

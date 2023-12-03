@@ -101,7 +101,7 @@ export const editBannerDal = async (
 export const getAllCategoriesDal = async () => {
   try {
     const response = await axios.get(
-      `${process.env.BASE_URL_ERP}api/shop_inventory/categories`
+      `${process.env.BASE_URL_ERP}shop_inventory/categories`
     );
     if (response.status < 300 && response.status >= 200) {
       const categories = response.data;
