@@ -17,3 +17,8 @@ get = BASE_URL/banners/banners
 post = BASE_URL/banners/banner
 delete = BASE_URL/banners/banner/:bannerId
 put = BASE_URL/banners/banner/:bannerId
+
+ENV
+MONGO_CONNECTION_URI=mongodb+srv://developers:x9XA3MGuRfIN4jIv@cluster0.erbreex.mongodb.net/
+BASE_URL_ERP=https://erp-server-uxqd.onrender.com/
+PORT=8080
