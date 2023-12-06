@@ -28,7 +28,7 @@ export const typeDefs = `#graphql
 
     type Query {
         getAllBanners: [Banners]
-        getBannerById(bannerId: ID!): Banners
+        getBannerById(bannerId: String!): Banners
         getBannerByTitle(bannerTitle: String!): Banners
         getAllCategories: [Categories]
         getBannersByCategoryName(categoryName: String!): [Banners]

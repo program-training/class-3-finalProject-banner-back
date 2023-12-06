@@ -13,9 +13,7 @@ export const getAllBannersDal = async () => {
 
 export const getBannerByIdDal = async (id: string) => {
   try {
-    console.log("hello")
     const result =  BannerModel.findOne({ _id: id });
-    console.log("hey", result)
     return result;
   } catch (error) {
     return handleDBResponseError(error);
