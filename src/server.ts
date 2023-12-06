@@ -4,8 +4,8 @@ import connectToDatabase from "./mongoDB/mongoConnection";
 import cors from "cors";
 import * as dotenv from "dotenv";
 import { ApolloServer } from "apollo-server-express";
-import { typeDefs } from "./resource/banners/graphQL/schema";
-import { resolvers } from "./resource/banners/graphQL/resolvers";
+import { typeDefs } from "./schema";
+import { resolvers } from "./resolvers";
 
 dotenv.config();
 
