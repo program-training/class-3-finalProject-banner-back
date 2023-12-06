@@ -6,11 +6,11 @@ import * as dotenv from "dotenv";
 import { ApolloServer } from "apollo-server-express";
 import { typeDefs } from "./resource/banners/graphQL/schema";
 import { resolvers } from "./resource/banners/graphQL/resolvers";
+import { Application } from "express";
 
 dotenv.config();
 
-export const app = express();
-
+export const app: Application = express();
 app.use(morgan);
 app.use(cors());
 app.use(express.json());
