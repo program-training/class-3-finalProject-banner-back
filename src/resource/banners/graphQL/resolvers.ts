@@ -1,23 +1,21 @@
 import {
-  createBannerService,
-  deleteBannerService,
-  editBannerService,
-  getAllBannersService,
-  getAllCategoriesService,
-  getBannerByIdService,
-  getBannerByTitleService,
-  getBannersByCategoryNameService,
-} from "../services/bannersService";
-import BannerInterface, {
-  CategoryInterface,
-} from "../interfaces/BannersInterface";
+  createBannerDal,
+  deleteBannerDal,
+  editBannerDal,
+  getAllBannersDal,
+  getAllCategoriesDal,
+  getBannerByIdDal,
+  getBannerByTitleDal,
+  getBannersByCategoryNameDal,
+} from "../dal";
+import BannerInterface from "../interfaces/BannersInterface";
 import { shuffleAndSlice } from "../getRandomCategories";
-
+import { CategoryInterface } from "../interfaces/BannersInterface";
 export const resolvers = {
   Query: {
     getAllBanners: async () => {
       try {
-        const banners = await getAllBannersService();
+        const banners = await getAllBannersDal();
         return banners;
       } catch (error) {
         console.error(error);
@@ -29,8 +27,7 @@ export const resolvers = {
       { bannerId }: { bannerId: string }
     ) => {
       try {
-        const banner = await getBannerByIdService(bannerId);
-        console.log("hey", banner);
+        const banner = await getBannerByIdDal(bannerId);
         return banner;
       } catch (error) {
         console.error(error);
@@ -42,7 +39,7 @@ export const resolvers = {
       { bannerTitle }: { bannerTitle: string }
     ) => {
       try {
-        const banners = await getBannerByTitleService(bannerTitle);
+        const banners = await getBannerByTitleDal(bannerTitle);
         return banners;
       } catch (error) {
         console.error(error);
@@ -51,7 +48,7 @@ export const resolvers = {
     },
     getAllCategories: async () => {
       try {
-        const banners = await getAllCategoriesService();
+        const banners = await getAllCategoriesDal();
         return banners;
       } catch (error) {
         console.error(error);
@@ -64,14 +61,13 @@ export const resolvers = {
     ) => {
       try {
         if (categoryName) {
-          const result = await getBannersByCategoryNameService(categoryName);
+          const result = await getBannersByCategoryNameDal(categoryName);
           return result;
         } else {
-          const categories: CategoryInterface[] =
-            await getAllCategoriesService();
+          const categories: CategoryInterface[] = await getAllCategoriesDal();
           const oneCategory = shuffleAndSlice(categories);
 
-          const result = await getBannersByCategoryNameService(
+          const result = await getBannersByCategoryNameDal(
             oneCategory[0].name.toString()
           );
 
@@ -89,26 +85,26 @@ export const resolvers = {
       { newBanner }: { newBanner: BannerInterface }
     ) => {
       try {
-        const banners = await createBannerService(newBanner);
+        const banners = await createBannerDal(newBanner);
         return banners;
       } catch (error) {
         console.error(error);
         throw error;
       }
     },
-    deleteBanner: async (
+    deleteBannerByID: async (
       _: BannerInterface,
       { bannerId }: { bannerId: string }
     ) => {
       try {
-        const banners = await deleteBannerService(bannerId);
+        const banners = await deleteBannerDal(bannerId);
         return banners;
       } catch (error) {
         console.error(error);
         throw error;
       }
     },
-    editBanner: async (
+    editExistBanner: async (
       _: BannerInterface,
       {
         bannerId,
@@ -116,7 +112,7 @@ export const resolvers = {
       }: { bannerId: string; editBanner: BannerInterface }
     ) => {
       try {
-        const banners = await editBannerService(bannerId, editBanner);
+        const banners = await editBannerDal(bannerId, editBanner);
         return banners;
       } catch (error) {
         console.error(error);

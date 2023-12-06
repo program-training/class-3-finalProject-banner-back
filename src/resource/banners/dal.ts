@@ -13,9 +13,7 @@ export const getAllBannersDal = async () => {
 
 export const getBannerByIdDal = async (id: string) => {
   try {
-    console.log("hello")
     const result =  BannerModel.findOne({ _id: id });
-    console.log("hey", result)
     return result;
   } catch (error) {
     return handleDBResponseError(error);
@@ -32,17 +30,6 @@ export const getBannerByTitleDal = async (title: string) => {
 
 export const createBannerDal = async (newBanner: BannerInterface) => {
   try {
-    // return BannerModel.create({
-    //   category: newBanner.category,
-    //   image: {
-    //     url: newBanner.image.url,
-    //     alt: newBanner.image.alt,
-    //   },
-    //   title: newBanner.title,
-    //   text: newBanner.text,
-    //   createAt: new Date(),
-    //   author: newBanner.author,
-    // });
     const banner = new BannerModel({
       url: newBanner.url,
       category: newBanner.category,

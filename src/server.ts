@@ -10,11 +10,9 @@ import { resolvers } from "./resource/banners/graphQL/resolvers";
 dotenv.config();
 
 export const app = express();
-
 app.use(morgan);
 app.use(cors());
 app.use(express.json());
-
 
 const server = new ApolloServer({ typeDefs, resolvers });
 const connect = async () => {
@@ -29,5 +27,3 @@ const connect = async () => {
   });
 };
 connect();
-
-
