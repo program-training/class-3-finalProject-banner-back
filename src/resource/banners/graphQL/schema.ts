@@ -28,7 +28,7 @@ export const typeDefs = `#graphql
 
     type Query {
         getAllBanners: [Banners]
-        getBannerById(bannerId: ID!): Banners
+        getBannerById(bannerId: String!): Banners
         getBannerByTitle(bannerTitle: String!): Banners
         getAllCategories: [Categories]
         getBannersByCategoryName(categoryName: String!): [Banners]
@@ -45,10 +45,6 @@ export const typeDefs = `#graphql
         author: String
     }
 
-    input DeleteBannerInput {
-        bannerId: String!
-    }
-
     input EditBannerInput {
         _id: String
         url: String
@@ -62,7 +58,7 @@ export const typeDefs = `#graphql
 
     type Mutation {
         createNewBanner(newBanner: CreateBannerInput!): Banners
-        deleteBanner(bannerId: DeleteBannerInput): Banners
-        editBanner(bannerId: String!, editBanner: EditBannerInput!): Banners 
+        deleteBannerByID(bannerId: String): Banners
+        editExistBanner(bannerId: String!, editBanner: EditBannerInput!): Banners 
     }
 `;
