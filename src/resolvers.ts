@@ -52,8 +52,8 @@ export const resolvers = {
               }
           
               return getRecByCategory;
-            } catch (err: any) {
-              console.log(`Error fetching recommendation by category name: ${err.message}`);
+            } catch (err) {
+              console.log(`Error fetching recommendation by category name: `);
               throw new Error('Failed to fetch recommendation by category name');
             }
           }

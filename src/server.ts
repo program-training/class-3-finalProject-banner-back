@@ -4,8 +4,8 @@ import connectToDatabase from "./mongoDB/mongoConnection";
 import cors from "cors";
 import * as dotenv from "dotenv";
 import { ApolloServer } from "apollo-server-express";
-import { typeDefs } from "./schema";
-import { resolvers } from "./resolvers";
+import { typeDefs } from "./resource/banners/graphQL/schema";
+import { resolvers } from "./resource/banners/graphQL/resolvers";
 
 dotenv.config();
 
@@ -15,7 +15,6 @@ app.use(morgan);
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 8181;
 
 const server = new ApolloServer({ typeDefs, resolvers });
 const connect = async () => {
@@ -24,11 +23,11 @@ const connect = async () => {
 
   app.listen({ port: 4000 }, async () => {
     console.log(
-      `🚀 Server ready at http://localhost:4000${server.graphqlPath} test`
-
+      `🚀 Server ready at http://localhost:4000${server.graphqlPath}`
     ),
       connectToDatabase();
   });
 };
 connect();
+
 
