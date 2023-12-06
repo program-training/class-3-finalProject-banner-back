@@ -1,5 +1,5 @@
-import { createRecProducts, deleteRecProductsById, getRecProductsByCategoryNameDal, readRecProducts, readRecProductsByProductId, readRecProductsByRecId } from "./resource/recommendedProducts/dal";
-import { recProductsInterface } from "./resource/recommendedProducts/interfaces/recProductsInterfaces";
+import { createRecProducts, deleteRecProductsById, getRecProductsByCategoryNameDal, readRecProducts, readRecProductsByProductId, readRecProductsByRecId } from "../dal";
+import { recProductsInterface } from "../interfaces/recProductsInterfaces";
 
 export const resolvers = {
     Query: {
