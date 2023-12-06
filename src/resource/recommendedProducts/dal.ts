@@ -24,8 +24,9 @@ export const getRecProductsByCategoryNameDal = async (
     const categories = await recProductsModel.find({
       category: categoryName,
     });
-    if (!categories) {
+    if (!categories || categories.length === 0) {
       console.log("No matching document found.");
+      return [];
     }
     const shuffledCategories = shuffleAndSlice(categories, quantity);
     return shuffledCategories;
@@ -33,6 +34,7 @@ export const getRecProductsByCategoryNameDal = async (
     return handleDBResponseError(error);
   }
 };
+
 
 export const getAllProductsDal = async () => {
   try {
