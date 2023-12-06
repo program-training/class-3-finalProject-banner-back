@@ -92,7 +92,7 @@ export const resolvers = {
         throw error;
       }
     },
-    deleteBanner: async (
+    deleteBannerByID: async (
       _: BannerInterface,
       { bannerId }: { bannerId: string }
     ) => {
@@ -104,7 +104,7 @@ export const resolvers = {
         throw error;
       }
     },
-    editBanner: async (
+    editExistBanner: async (
       _: BannerInterface,
       {
         bannerId,

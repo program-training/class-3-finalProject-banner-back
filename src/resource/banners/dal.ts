@@ -30,17 +30,6 @@ export const getBannerByTitleDal = async (title: string) => {
 
 export const createBannerDal = async (newBanner: BannerInterface) => {
   try {
-    // return BannerModel.create({
-    //   category: newBanner.category,
-    //   image: {
-    //     url: newBanner.image.url,
-    //     alt: newBanner.image.alt,
-    //   },
-    //   title: newBanner.title,
-    //   text: newBanner.text,
-    //   createAt: new Date(),
-    //   author: newBanner.author,
-    // });
     const banner = new BannerModel({
       url: newBanner.url,
       category: newBanner.category,
