@@ -2,7 +2,7 @@ import axios from "axios";
 import { handleDBResponseError } from "../../utils/handleErrors";
 import BannerModel from "../../mongoDB/Schemas/BannerSchema";
 import BannerInterface from "./interfaces/BannersInterface";
-
+import { shuffleAndSlice } from "./getRandomCategories";
 export const getAllBannersDal = async () => {
   try {
     return BannerModel.find({});
@@ -32,17 +32,6 @@ export const getBannerByTitleDal = async (title: string) => {
 
 export const createBannerDal = async (newBanner: BannerInterface) => {
   try {
-    // return BannerModel.create({
-    //   category: newBanner.category,
-    //   image: {
-    //     url: newBanner.image.url,
-    //     alt: newBanner.image.alt,
-    //   },
-    //   title: newBanner.title,
-    //   text: newBanner.text,
-    //   createAt: new Date(),
-    //   author: newBanner.author,
-    // });
     const banner = new BannerModel({
       url: newBanner.url,
       category: newBanner.category,
@@ -114,17 +103,6 @@ export const getAllCategoriesDal = async () => {
     return handleDBResponseError(error);
   }
 };
-
-function shuffleAndSlice<T>(array: T[]): T[] {
-  const shuffledArray = array.slice();
-  const quantityAsNumber = 1;
-
-  for (let i = shuffledArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-  }
-  return shuffledArray.slice(0, quantityAsNumber);
-}
 
 export const getBannersByCategoryNameDal = async (categoryName: string) => {
   try {
