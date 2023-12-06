@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@apollo/server": "^4.9.5",
+    "apollo-server": "^3.13.0",
     "apollo-server-express": "^3.13.0",
     "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
@@ -50,5 +51,6 @@
     "morgan": "^1.10.0",
     "react-stripe-js": "^1.1.5",
     "uuid": "^9.0.0"
-  }
+  },
+  "keywords": []
 }
