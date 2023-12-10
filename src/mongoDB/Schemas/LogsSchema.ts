@@ -1,4 +1,4 @@
-import mongoose, { Schema, Model, Document } from "mongoose";
+import mongoose, { Schema, Model } from "mongoose";
 import { LogsInterface } from "../../resource/logs/interfaces/logInterface";
 
 const logSchema = new Schema<LogsInterface>({
