@@ -1,17 +1,18 @@
-import { Types } from "mongoose";
-
-
-
 export default interface BannerInterface {
-  _id: Types.ObjectId;
-  category: string
+  _id?: string;
+  url: string;
+  category: string;
   image: {
-      url: string;
-      alt: string;
-  }
-  title: string
+    url: string;
+    alt: string;
+  };
+  title: string;
   text: string;
-  createAt: Date;
-  author: Types.ObjectId;
-  
+  createAt?: Date;
+  author: string;
+}
+export interface CategoryInterface {
+  _id?: string;
+  name: string;
+  img: string;
 }

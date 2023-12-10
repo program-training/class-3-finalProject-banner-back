@@ -4,7 +4,8 @@ import chalk from "chalk";
 import morgan from "./logger/morgan";
 import connectToDatabase from "./mongoDB/mongoConnection";
 import cors from "cors";
-require('dotenv').config();
+import * as dotenv from "dotenv";
+dotenv.config();
 
 export const app = express();
 
@@ -17,5 +18,5 @@ const PORT = process.env.PORT || 8181;
 
 app.listen(PORT, async () => {
   console.log(chalk.blueBright(`Server listening on port: ${PORT}`));
-  connectToDatabase()
+  connectToDatabase();
 });

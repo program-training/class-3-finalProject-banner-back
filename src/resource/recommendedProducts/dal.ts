@@ -37,7 +37,7 @@ export const getRecProductsByCategoryNameDal = async (
 export const getAllProductsDal = async () => {
   try {
     const response = await axios.get(
-      `${process.env.BASE_URL_ERP}api/shop_inventory/`
+      `${process.env.BASE_URL_ERP}shop_inventory/`
     );
     if (response.status < 300 && response.status >= 200) {
       const products = response.data;

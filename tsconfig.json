@@ -1,5 +1,5 @@
 {
-  "exclude": ["./src/__tests__","jest.config.js"],
+  "exclude": ["./src/__tests__", "jest.config.js"],
   "compilerOptions": {
     "target": "ESNext" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     "module": "CommonJS" /* Specify what module code is generated. */,
@@ -11,6 +11,4 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "removeComments": true /* Disable emitting comments. */
   }
-  
 }
-
