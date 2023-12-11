@@ -11,7 +11,10 @@ import {
 
 const router = express.Router();
 
-router.get("/categoryName", getRecProductsByCategoryNameController);
+router.get(
+  "/categoryName",
+  getRecProductsByCategoryNameController
+);
 router.get("/allProducts", getAllProductsController);
 router.get("/recProducts", handleGetRecProducts);
 router.get("/recProductsById/:recProductId", handleGetRecProductById);

@@ -49,6 +49,7 @@
     "mongoose": "^7.5.0",
     "morgan": "^1.10.0",
     "pg": "^8.11.3",
+    "react-router-dom": "^6.20.1",
     "react-stripe-js": "^1.1.5",
     "uuid": "^9.0.0"
   }
