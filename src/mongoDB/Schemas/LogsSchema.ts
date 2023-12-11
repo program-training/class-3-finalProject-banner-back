@@ -1,5 +1,5 @@
 import mongoose, { Schema, Model } from "mongoose";
-import { LogsInterface } from "../../resource/logs/interfaces/logInterface";
+import { LogsInterface } from "../../resource/logsMongodb/interfaces/logInterface";
 
 const logSchema = new Schema<LogsInterface>({
   shortDate: { type: String, required: true },
