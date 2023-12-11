@@ -1,4 +1,4 @@
-import mongoose, { Schema, Model, Types } from "mongoose";
+import mongoose, { Schema, Model } from "mongoose";
 import { recProductsInterface } from "../../resource/recommendedProducts/interfaces/recProductsInterfaces";
 
 const recProductsSchema = new Schema<recProductsInterface>({
