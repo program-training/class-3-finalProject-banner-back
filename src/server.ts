@@ -18,5 +18,9 @@ const PORT = process.env.PORT || 8181;
 
 app.listen(PORT, async () => {
   console.log(chalk.blueBright(`Server listening on port: ${PORT}`));
+
   connectToDatabase();
+  // check connection
+  // console.log(pool.totalCount);
+  
 });
