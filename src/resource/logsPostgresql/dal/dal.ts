@@ -1,6 +1,6 @@
 import { pool } from "../../../postgresql/connectToDBPg";
 
-export const getAllHoursDal = async (dateId: String) => {
+export const getAllHoursDal = async (dateId: string) => {
   try {
     const arrayOfHours = Array(24).fill(0);
     const foundDate = await pool.query(
