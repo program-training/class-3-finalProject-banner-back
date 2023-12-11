@@ -9,7 +9,7 @@ export const getAllHoursDal = async (dateIid: string) => {
         const dateString = element.date;
         const dateObject = new Date(parseInt(dateString));
         const hour = dateObject.getHours();
-        arrayOfHours[hour] += 1;
+        arrayOfHours[hour - 1] += 1;
       }
     }
     return arrayOfHours;
