@@ -22,3 +22,4 @@ ENV
 MONGO_CONNECTION_URI=mongodb+srv://developers:x9XA3MGuRfIN4jIv@cluster0.erbreex.mongodb.net/
 BASE_URL_ERP=https://erp-server-uxqd.onrender.com/
 PORT=8080
+ACCESS_TOKEN_JWT
