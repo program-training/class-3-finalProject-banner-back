@@ -4,14 +4,14 @@ export const getAllHoursDal = async (dateId: string) => {
   try {
     const arrayOfHours = Array(24).fill(0);
     const foundDate = await pool.query(
-      `SELECT * FROM logs WHERE shortDate = $1`,
+      `SELECT created_at FROM users_log WHERE DATE(created_at) = $1`,
       [dateId]
-    );
+    );    
 
     if (foundDate.rows.length > 0) {
       for (const element of foundDate.rows) {
-        const dateString = element.date;
-        const dateObject = new Date(parseInt(dateString));
+        const dateString = element.created_at;
+        const dateObject = new Date(dateString);
         const hour = dateObject.getHours();
         arrayOfHours[hour - 1] += 1;
       }
